@@ -1,3 +1,5 @@
+import { showCurrentDirectory } from '../current-directory.js';
+
 export const outputGreeting = () => {
   const prefix = '--username=';
   const args = process.argv.slice(2);
@@ -12,4 +14,5 @@ export const outputGreeting = () => {
   }, []);
 
   console.log(cliArgs.join(', '));
+  showCurrentDirectory();
 } 

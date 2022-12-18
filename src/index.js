@@ -1,14 +1,14 @@
 import { stdin as input, stdout as output, chdir } from 'node:process';
-import  { showCurrentDirectory } from './current-directory.js';
 import { moveUpFromTheCurrentDirectory } from './up/up.js';
 import { exitTheFileManager } from './exit/exit.js';
 import { outputGreeting } from './start/start.js';
 import * as readline from 'node:readline';
 import { homedir } from 'node:os';
+import { outputList } from './ls/ls.js';
+
 
 chdir(homedir());
 outputGreeting();
-showCurrentDirectory();
 
 const rl = readline.createInterface({ input, output });
 
@@ -18,7 +18,11 @@ rl.on('line', (input) => {
     moveUpFromTheCurrentDirectory();
   }
 
-  else if (input === '.exit') { 
+  else if (input === 'ls') {
+    outputList();
+  }
+
+  else if (input === '.exit') {
     rl.close();
     exitTheFileManager();
   }
@@ -30,5 +34,3 @@ rl.on('SIGINT', () => {
   rl.close();
   exitTheFileManager();
 });
-
-console.log(homedir());
