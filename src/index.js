@@ -3,9 +3,9 @@ import { moveUpFromTheCurrentDirectory } from './up/up.js';
 import { exitTheFileManager } from './exit/exit.js';
 import { outputGreeting } from './start/start.js';
 import * as readline from 'node:readline';
-import { homedir } from 'node:os';
+import { goToFolder } from './cd/cd.js';
 import { outputList } from './ls/ls.js';
-
+import { homedir } from 'node:os';
 
 chdir(homedir());
 outputGreeting();
@@ -16,6 +16,10 @@ rl.on('line', (input) => {
 
   if (input === 'up') {
     moveUpFromTheCurrentDirectory();
+  }
+
+  else if (input.includes('cd')) {
+    goToFolder(input.split(' ')[1]);
   }
 
   else if (input === 'ls') {
