@@ -2,6 +2,7 @@ import { stdin as input, stdout as output, chdir } from 'node:process';
 import { moveUpFromTheCurrentDirectory } from './up/up.js';
 import { exitTheFileManager } from './exit/exit.js';
 import { outputGreeting } from './start/start.js';
+import { addEmptyFile } from './add/add.js';
 import * as readline from 'node:readline';
 import { goToFolder } from './cd/cd.js';
 import { outputList } from './ls/ls.js';
@@ -29,6 +30,10 @@ rl.on('line', (input) => {
 
   else if (input.includes('cat')) {
     readFile(input.split(' ')[1]);
+  }
+
+  else if (input.includes('add')) {
+    addEmptyFile(input.split(' ')[1]);
   }
 
   else if (input === '.exit') {
