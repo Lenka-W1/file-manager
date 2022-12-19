@@ -7,6 +7,7 @@ import * as readline from 'node:readline';
 import { goToFolder } from './cd/cd.js';
 import { outputList } from './ls/ls.js';
 import { readFile } from './cat/cat.js';
+import { renameFile } from './rn/rn.js';
 import { homedir } from 'node:os';
 
 chdir(homedir());
@@ -34,6 +35,10 @@ rl.on('line', (input) => {
 
   else if (input.includes('add')) {
     addEmptyFile(input.split(' ')[1]);
+  }
+
+  else if (input.includes('rn')) {
+    renameFile(input.split(' ')[1], input.split(' ')[2]);
   }
 
   else if (input === '.exit') {
