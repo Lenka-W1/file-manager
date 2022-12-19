@@ -1,10 +1,11 @@
-import { writeFile } from 'fs/promises';
 import { showCurrentDirectory } from '../current-directory.js';
 import { cwd } from 'node:process';
+import { rm } from 'node:fs/promises';
 
-export const addEmptyFile = async (path) => {
+export const removeFile = async (path) => {
+  const file = cwd() + '\\' + path;
   try {
-    await writeFile(cwd() + '\\' + path, '');
+    await rm(file);
     showCurrentDirectory();
   }
   catch (error) {
