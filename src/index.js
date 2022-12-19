@@ -5,6 +5,7 @@ import { outputGreeting } from './start/start.js';
 import * as readline from 'node:readline';
 import { goToFolder } from './cd/cd.js';
 import { outputList } from './ls/ls.js';
+import { readFile } from './cat/cat.js';
 import { homedir } from 'node:os';
 
 chdir(homedir());
@@ -24,6 +25,10 @@ rl.on('line', (input) => {
 
   else if (input === 'ls') {
     outputList();
+  }
+
+  else if (input.includes('cat')) {
+    readFile(input.split(' ')[1]);
   }
 
   else if (input === '.exit') {

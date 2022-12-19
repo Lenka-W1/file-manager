@@ -6,7 +6,7 @@ export const moveUpFromTheCurrentDirectory = async () => {
     chdir('..');
     showCurrentDirectory();
   }
-  catch {
+  catch (error) {
     console.error('Operation failed');
   }
 }
